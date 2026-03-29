@@ -1,0 +1,8 @@
+streamlit
+pandas
+numpy
+tensorflow
+scikit-learn
+joblib
+pynput
+importlib-metadata; python_version < "3.10"
