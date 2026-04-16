@@ -3,7 +3,15 @@ import pandas as pd
 import threading
 import time
 import sys
+import os
 import importlib.metadata
+
+# Ensure the app's own directory is always on sys.path so sibling modules
+# (typing_capture, feature_extractor, predictor) can be imported regardless
+# of which directory the user launches Streamlit from.
+_APP_DIR = os.path.dirname(os.path.abspath(__file__))
+if _APP_DIR not in sys.path:
+    sys.path.insert(0, _APP_DIR)
 
 # FIX for Python 3.9 + TF 2.16+ where Keras/TensorFlow looks for 'packages_distributions' 
 # which was only added to importlib.metadata in Python 3.10.
